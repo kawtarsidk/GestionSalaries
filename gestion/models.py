@@ -26,3 +26,23 @@ class Salarie(Employe):
     def __init__(self):
         super().__init__()
 
+class Compte(models.Model):
+
+    login = models.CharField(max_length=30)
+    password = models.CharField(max_length=30)
+
+    def __init__(self):
+        self.__init__()
+
+class BulletinPaie(models.Model):
+
+     prime = models.IntegerField(max_length=10)
+     p_impot = models.IntegerField(max_length=10)
+     p_cnss = models.IntegerField(max_length=10)
+     p_cimr = models.IntegerField(max_length=10)
+
+     def __init__(self):
+         self.__init__()
+
+
+
