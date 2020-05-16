@@ -19,5 +19,5 @@ from django.urls import include
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url('backoffice/', include(('gestion.urls', 'gestion'), namespace='gestion'))
+    url('gestion/welcome', include(('gestion.urls', 'gestion'), namespace='gestion'))
 ]

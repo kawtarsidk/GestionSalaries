@@ -11,8 +11,8 @@ class Employe(models.Model):
     dateNaissance = models.DateField()
     departement = models.CharField(max_length=30)
     emploiOccupe = models.CharField(max_length=30)
-    Anciennete = models.IntegerField(max_length=30)
-    salaireBase = models.IntegerField(max_length=10)
+    Anciennete = models.IntegerField()
+    salaireBase = models.IntegerField()
 
     def __init__(self):
         self.__init__()
@@ -36,10 +36,10 @@ class Compte(models.Model):
 
 class BulletinPaie(models.Model):
 
-     prime = models.IntegerField(max_length=10)
-     p_impot = models.IntegerField(max_length=10)
-     p_cnss = models.IntegerField(max_length=10)
-     p_cimr = models.IntegerField(max_length=10)
+     prime = models.IntegerField()
+     p_impot = models.IntegerField()
+     p_cnss = models.IntegerField()
+     p_cimr = models.IntegerField()
 
      def __init__(self):
          self.__init__()
