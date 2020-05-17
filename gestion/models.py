@@ -17,28 +17,29 @@ class Employe(models.Model):
     salaireBase = models.IntegerField()
 
     """la notation ManyToOne"""
-    bulletinPaie = models.ForeignKey('BulletinPaie', on_delete=models.CASCADE)
+    bulletinPaie = models.ForeignKey(BulletinPaie, on_delete=models.CASCADE)
 
     """la notation OneToOne"""
-    compte = models.OneToOneField('Compte', on_delete=models.CASCADE, primary_key=True)
+    compte = models.OneToOneField(Compte, on_delete=models.CASCADE, primary_key=True)
 
     def __init__(self):
         self.__init__()
 
-    def __str__(self):
-        return self.nom+" "+self.compte
 
-class RH(Employe):
+class RH(models.Employe):
+
     def __init__(self):
         super().__init__()
 
 
-class Salarie(Employe):
+class Salarie(models.Employe):
+
     def __init__(self):
         super().__init__()
 
 
 class Compte(models.Model):
+
     login = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
 
@@ -47,6 +48,7 @@ class Compte(models.Model):
 
 
 class BulletinPaie(models.Model):
+
     prime = models.IntegerField()
     p_impot = models.IntegerField()
     p_cnss = models.IntegerField()
