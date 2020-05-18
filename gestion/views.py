@@ -6,3 +6,4 @@ from django.shortcuts import render
 def index(request):
     # return  HttpResponse("welcome test")
     return render(request, "login.html")
+

@@ -16,7 +16,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/eco" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.8 (GestionSalaries)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.8 (Exemple_djangp)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
