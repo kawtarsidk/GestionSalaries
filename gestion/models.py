@@ -21,33 +21,32 @@ class Employe(models.Model):
     """la notation OneToOne"""
     compte = models.OneToOneField('Compte', on_delete=models.CASCADE, primary_key=True)
 
-    def __init__(self, *args, **kwargs):
-        self.__init__()
-        super().__init__(*args, **kwargs)
-
     def __str__(self):
-        return self.nom + " " + self.compte
-
+        return self.matricule, " ", self.nom, " ", self.prenom, " ", self.cin, " ", self.adresse, " ", self.telephone\
+            , " ", self.email, " ", self.dateNaissance, " ", self.departement, " ", self.emploiOccupe\
+            , " ", self.Anciennete, " ", self.salaireBase
 
 class RH(Employe):
-    def __init__(self):
-        super().__init__()
+    def __str__(self):
+        return super().__str__()
 
 
 class Salarie(Employe):
-    def __init__(self):
-        super().__init__()
+    def __str__(self):
+        return super().__str__()
 
 
 class Compte(models.Model):
     login = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
 
-    def __init__(self):
-        self.__init__()
-
     def __str__(self):
         return self.login
+
+
+"""def __init__(self, login, password):
+        self.login = login
+        self.password = password"""
 
 
 class BulletinPaie(models.Model):
@@ -56,8 +55,6 @@ class BulletinPaie(models.Model):
     p_cnss = models.IntegerField()
     p_cimr = models.IntegerField()
 
-    def __init__(self):
-        self.__init__()
-
     def __str__(self):
-        return self.prime
+        return self.prime, " ", self.p_impot, " ", self.p_cnss, " ", self.p_cimr
+

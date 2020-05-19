@@ -4,5 +4,4 @@ from gestion.views import *
 
 urlpatterns = [
     url('welcome', view=index)
-
 ]
