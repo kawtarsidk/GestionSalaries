@@ -1,0 +1,24 @@
+
+
+html,body{
+background-image: url('/static/images/salaire.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+display: inline-block;
+text-align: center;
+
+
+}
+
+
+.card{
+height: 600px;
+margin-top:25px;
+margin-bottom: auto;
+width: 800px;
+background-color: white ;
+
+
+}
+

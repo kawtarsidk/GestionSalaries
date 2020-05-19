@@ -20,7 +20,8 @@ def index(request):
         login = request.POST.get('login')
         password = request.POST.get('password')
         if checkCompte(login, password) == "true":
-            return HttpResponse('c est un compte')
+           # return HttpResponse('c est un compte')
+            return render(request, "accueil.html")
         else:
             return HttpResponse('erreur')
 
