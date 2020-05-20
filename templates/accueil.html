@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>hello?</h2>
+<h2>WELCOME !!!</h2>
+    <form method="post">
+    {%  csrf_token %}
+        {{ form.as_ul }}
+    <button type="submit">ok</button>
+    </form>
+    {% for message in messages %}
+    <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
 {% endblock %}
