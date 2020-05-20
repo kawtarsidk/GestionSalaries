@@ -1,5 +1,7 @@
+from django.contrib.auth import authenticate, login, logout
 
 from gestion.models import *
+from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -17,14 +19,19 @@ def checkCompte(login, password):
 def index(request):
 
     if request.method == 'POST':
-        login = request.POST.get('login')
+        username = request.POST.get('username')
         password = request.POST.get('password')
-        if checkCompte(login, password) == "true":
-           # return HttpResponse('c est un compte')
-            return render(request, "accueil.html")
+
+        compte = authenticate(request, username=username, password=password)
+
+        if compte is not None:
+            login(request, compte)
+            return HttpResponse("vous etes connecte")
         else:
-            return HttpResponse('erreur')
+            return HttpResponse("erreur")
 
     return render(request, "login.html")
+
+
 
 
