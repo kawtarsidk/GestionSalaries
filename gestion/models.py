@@ -21,10 +21,10 @@ class Employe(models.Model):
     """la notation OneToOne"""
     compte = models.OneToOneField('Compte', on_delete=models.CASCADE, primary_key=True)
 
-    def __str__(self):
+    """def __str__(self):
         return self.matricule, " ", self.nom, " ", self.prenom, " ", self.cin, " ", self.adresse, " ", self.telephone\
             , " ", self.email, " ", self.dateNaissance, " ", self.departement, " ", self.emploiOccupe\
-            , " ", self.Anciennete, " ", self.salaireBase
+            , " ", self.Anciennete, " ", self.salaireBase"""
 
 class RH(Employe):
     def __str__(self):
@@ -37,11 +37,11 @@ class Salarie(Employe):
 
 
 class Compte(models.Model):
-    login = models.CharField(max_length=30)
+    username = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.login
+        return self.username
 
 
 """def __init__(self, login, password):
@@ -55,6 +55,6 @@ class BulletinPaie(models.Model):
     p_cnss = models.IntegerField()
     p_cimr = models.IntegerField()
 
-    def __str__(self):
-        return self.prime, " ", self.p_impot, " ", self.p_cnss, " ", self.p_cimr
+    """def __str__(self):
+        return self.prime, " ", self.p_impot, " ", self.p_cnss, " ", self.p_cimr"""
 

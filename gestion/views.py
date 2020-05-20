@@ -1,34 +1,37 @@
-from gestion.forms import EmpForm
+from django.contrib.auth import authenticate, login, logout
+
 from gestion.models import *
+from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib.auth.forms import  UserCreationForm
-from django.contrib.auth import authenticate,login, logout
-from .urls import *
 
-def accueil(request):
-    return render(request, "accueil.html")
+
+def checkCompte(login, password):
+
+    compte = Compte.objects.all()
+    for c in compte:
+        if c.login == login and c.password == password:
+            return 'true'
+        else:
+            return 'false'
+
 
 def index(request):
-    if request.method == 'POST':
-        uname = request.POST.get('login')
-        password = request.POST.get('password')
-        user = authenticate(request, username=uname, password=password)
-        if user is not None:
-            login(request,user)
-            return  redirect('gestion:accueil')
 
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        compte = authenticate(request, username=username, password=password)
+
+        if compte is not None:
+            login(request, compte)
+            return HttpResponse("vous etes connecte")
         else:
-            messages.error(request,"mot de pass ou login incorrects")
+            return HttpResponse("erreur")
 
     return render(request, "login.html")
 
 
-def ajoutEmploye(request):
-    form = EmpForm()
-    if request.method == 'POST':
-        form = EmpForm(request.POST)
-        form.save()
-        messages.success(request, 'bien ajoute')
-    return render(request, "accueil.html", {'form': form})
+
+
