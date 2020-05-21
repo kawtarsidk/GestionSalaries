@@ -2,51 +2,84 @@
 <html lang="en">
 <head>
   <title>bienvenue dans la page d'accueil</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
     {%  load static %}
-    <link href="{%  static '/css/accueil.css' %}" rel="stylesheet">
+    <link href="{%  static '/css/base.css' %}" rel="stylesheet">
+   {%  load static %}
+    <link href="{%  static '/css/bulma.css' %}" rel="stylesheet">
+
 
 </head>
-
 <body>
 
     <div class="card">
 		<div class="card-header">
-            <nav class="navbar navbar-inverse">
-                 <div class="container-fluid">
-                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Gestion des salaires</a>
-                </div>
-                 <ul class="nav navbar-nav">
-                     <li class="active"><a href="#">Home</a></li>
-                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestion des salaries<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">ajouter</a></li>
-                    <li><a href="#">afficher les salaries</a></li>
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item is-size-5 has-text-weight-bold has-background-primary has-text-white"  >
 
-                </ul>
-                    </li>
-                    <li><a href="#">voir mon bulletin</a></li>
-                    <li><a href="#">mon profile</a></li>
-                 </ul>
-                 <ul class="nav navbar-nav navbar-right">
-                     <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                 </ul>
-                 </div>
-            </nav>
+        Gestion des Salaries
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+
+        Home
+      </a>
+
+      <a class="navbar-item">
+        Documentation
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Gestion
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="{% url 'gestion:add' %}">
+            ajouter un nouveau salarie
+          </a>
+          <a class="navbar-item" href="{% url 'gestion:all'%}">
+            afficher
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
         </div>
-     <div class="card-body">
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light">
+            Log in
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+        </div>
+        <div class="card-body">
 {% block content %}
 {% endblock %}
-</div>
-    <div class="card-footer"></div>
+        </div>
 
-</div>
-</div>
+        <div class="card-footer">
+        </div>
+    </div>
 </body>
 </html>

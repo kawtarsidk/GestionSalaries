@@ -18,7 +18,8 @@ margin-top:25px;
 margin-bottom: auto;
 width: 800px;
 background-color: white ;
-
+    display: inline-block;
+    text-align: right;
 
 }
 

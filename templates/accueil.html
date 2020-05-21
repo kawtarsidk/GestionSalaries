@@ -1,12 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>WELCOME !!!</h2>
-    <form method="post">
-    {%  csrf_token %}
-        {{ form.as_ul }}
-    <button type="submit">ok</button>
-    </form>
-    {% for message in messages %}
-    <div class="alert alert-success">{{ message }}</div>
-    {% endfor %}
+<i class="fas fa-home"></i>
+        <h1 class=" is-size-1 has-text-centered has-text-weight-bold "> WELCOME !!!</h1>
 {% endblock %}
