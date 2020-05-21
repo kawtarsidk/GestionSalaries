@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<i class="fas fa-home"></i>
+        <h1 class=" is-size-1 has-text-centered has-text-weight-bold "> Le salarie {{ user.id }}</h1>
+    <ul>
+     <li> {{ user.nom }}</li>
+     <li> {{ user.prenom }}</li>
+     <li> {{ user.Email }}</li>
+     <li> {{ user.Addresse }}</li>
+     <li> {{ user.Telephone }}</li>
+     <li> {{ user.Departement }}</li>
+     <li> {{ user.EmploiOccupe }}</li>
+     <li> {{ user.dateNaissance }}</li>
+     <li> {{ user.Anciennete}}</li>
+     <li> {{ user.SalaireBase}}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<i class="fas fa-home"></i>
+        <h1 class=" is-size-1 has-text-centered has-text-weight-bold ">Liste des Salaries</h1>
+<table class="table">
+    <thead>
+        <tr>
+        <th>#</th>
+        <th scope="col">nom</th>
+        <th scope="col">prenom</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">addresse</th>
+        <th scope="col">telephone</th>
+        <th scope="col">Departement</th>
+        <th scope="col">Emploi occupe</th>
+        <th scope="col">Date</th>
+        <th scope="col">Anciennete</th>
+        <th scope="col">SalaireBase</th>
+        <th scope="col">Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in salaries %}
+            <tr>
+            <th scope="row">{{ u.id }}</th>
+            <td>{{ u.nom }}</td>
+            <td>{{ u.prenom }}</td>
+            <td>{{ u.Email }}</td>
+            <td>{{ u.Addresse }}</td>
+            <td>{{ u.Telephone }}</td>
+            <td>{{ u.Departement}}</td>
+            <td>{{ u.EmploiOccupe}}</td>
+            <td>{{ u.dateNaissance }}</td>
+            <td>{{ u.Anciennete }}</td>
+            <td>{{ u.SalaireBase }}</td>
+            <td><a href="{% url 'gestion:getsal' u.id %}">Lire</a></td>
+            </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}

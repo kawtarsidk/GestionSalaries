@@ -6,4 +6,5 @@ from django.urls import include
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('gestion/', include(('gestion.urls', 'gestion'), namespace='gestion'))
+
 ]
