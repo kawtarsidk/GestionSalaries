@@ -1,11 +1,10 @@
-from gestion.forms import EmpForm
+from gestion.forms import SalForm, BulletinForm
 from gestion.models import *
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
-
 
 
 def accueil(request):
@@ -28,9 +27,9 @@ def index(request):
 
 
 def ajoutEmploye(request):
-    form = EmpForm()
+    form = SalForm()
     if request.method == 'POST':
-        form = EmpForm(request.POST)
+        form = SalForm(request.POST)
         form.save()
         messages.success(request, 'bien ajoute')
     return render(request, "addSalarie.html", {'form': form})
@@ -45,6 +44,7 @@ def getSalarie(request, id):
     u = Salarie.objects.get(id=id)
     return render(request, "getSalarie.html", {"user": u})
 
+
 def registration(request):
     form = UserCreationForm()
     if request.method == 'POST':
@@ -54,4 +54,15 @@ def registration(request):
             messages.success(request,'votre compte a été bien ajouté !')
             return redirect('gestion:welcome')
     return render(request, "register.html", {'form': form})
+
+
+def infoBulletin(request):
+    form = BulletinForm()
+    if request.method == 'POST':
+        form = BulletinForm(request.POST)
+        form.save()
+        messages.success(request, 'information bien ajouté')
+    return render(request, "addSalarie.html", {'form': form})
+
+
 

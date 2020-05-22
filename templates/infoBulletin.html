@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% block title %}
+        <h4 class=" is-size-4 has-text-centered has-text-weight-bold ">Ajouter information supplementaire</h4>
+    {% endblock %}
+    <br>
+    <br>
+
+     <div class="container">
+        <div class="columns is-mobile">
+            <div class="column is-half is-offset-one-quarter">
+                <form method="post">
+                    {% csrf_token %}
+                <table>
+                    {% for field in form %}
+                        <tr>
+                        <th><label for="{{ field.id_for_label }}" class="label">{{ field.html_name }}</label></th>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td>{{ field }}</td>
+
+                        </tr>
+                    {% endfor %}
+                </table>
+                <br>
+                    <input type="submit" value="Enregistrer" class="button is-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    {% for message in messages %}
+    <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+{% endblock %}
+

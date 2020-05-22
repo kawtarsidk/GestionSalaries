@@ -38,9 +38,9 @@ class Salarie(Employe):
 
 class BulletinPaie(models.Model):
     prime = models.IntegerField()
-    p_impot = models.IntegerField()
-    p_cnss = models.IntegerField()
-    p_cimr = models.IntegerField()
+    p_impot = 0.25
+    p_cnss = 0.0429
+    p_cimr = 0.06
 
     """def __str__(self):
         return self.prime, " ", self.p_impot, " ", self.p_cnss, " ", self.p_cimr"""
