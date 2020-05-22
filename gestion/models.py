@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Employe(models.Model):
     matricule = models.CharField(max_length=20)
@@ -17,7 +17,7 @@ class Employe(models.Model):
 
     """la notation ManyToOne"""
     bulletinPaie = models.ForeignKey('BulletinPaie', on_delete=models.CASCADE)
-
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
     """def __str__(self):
