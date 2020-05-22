@@ -15,7 +15,7 @@
 		<div class="card-header">
             <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item is-size-5 has-text-weight-bold has-background-primary has-text-white"  >
+    <a class="navbar-item is-size-5 has-text-weight-bold has-background-primary has-text-white"  href="{% url 'gestion:accueil' %}">
 
         Gestion des Salaries
     </a>
@@ -29,8 +29,7 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-
+      <a class="navbar-item" href="{% url 'gestion:accueil' %}">
         Home
       </a>
 

@@ -5,8 +5,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='gestion:welcome')
 def accueil(request):
     return render(request, "accueil.html")
 
@@ -31,6 +33,7 @@ def deconnexion(request):
     return redirect('gestion:welcome')
 
 
+@login_required(login_url='gestion:welcome')
 def ajoutEmploye(request):
     form = SalForm()
     if request.method == 'POST':
@@ -40,16 +43,19 @@ def ajoutEmploye(request):
     return render(request, "addSalarie.html", {'form': form})
 
 
+@login_required(login_url='gestion:welcome')
 def listeSalaries(request):
     liste = Salarie.objects.all()
     return render(request, "listeSalaries.html", {'salaries': liste})
 
 
+@login_required(login_url='index')
 def getSalarie(request, id):
     u = Salarie.objects.get(id=id)
     return render(request, "getSalarie.html", {"user": u})
 
 
+@login_required(login_url='gestion:welcome')
 def registration(request):
     form = UserCreationForm()
     if request.method == 'POST':
@@ -61,6 +67,7 @@ def registration(request):
     return render(request, "register.html", {'form': form})
 
 
+@login_required(login_url='gestion:welcome')
 def infoBulletin(request):
     form = BulletinForm()
     if request.method == 'POST':
