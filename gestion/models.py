@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -35,7 +36,6 @@ class Salarie(Employe):
         return super().__str__()
 
 
-
 class BulletinPaie(models.Model):
     prime = models.IntegerField()
     p_impot = models.IntegerField()
@@ -44,3 +44,4 @@ class BulletinPaie(models.Model):
 
     """def __str__(self):
         return self.prime, " ", self.p_impot, " ", self.p_cnss, " ", self.p_cimr"""
+

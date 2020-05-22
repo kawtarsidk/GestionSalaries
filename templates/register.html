@@ -26,7 +26,7 @@ align-content: center;
 }
 
 .card{
-height: 400px;
+height: 500px;
 margin-top: auto;
 margin-bottom: auto;
 width: 500px;
@@ -44,6 +44,9 @@ position: absolute;
     text-align: center;
     font-weight: bold;
     font-size: medium;
+}
+.card-footer {
+    height: 200px;
 }
 
 </style>
@@ -80,16 +83,17 @@ position: absolute;
     <br>
     <br>
     <br>
-    <div style="position: absolute;">
-       <input type="submit"  value="Enregistrer"  class=" btn btn-info">
+    <div style="float: right;">
+       <input type="submit"  value="Enregistrer"  class=" btn btn-info"  >
     </div>
 
 </form>
 </div>
 			<div class="card-footer">
-{%for message in messages %}
-    <div class="alert alert-danger">{{ message }}</div>
+                {%for message in messages %}
+    <div class="alert alert-success">{{ message }}</div>
 {% endfor %}
+{{ form.errors }}
             </div>
 		</div>
 	</div>

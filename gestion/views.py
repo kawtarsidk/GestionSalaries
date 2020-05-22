@@ -14,9 +14,9 @@ def accueil(request):
 
 def index(request):
     if request.method == 'POST':
-        uname = request.POST.get('login')
+        username = request.POST.get('login')
         password = request.POST.get('password')
-        user = authenticate(request, username=uname, password=password)
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             return redirect('gestion:accueil')
@@ -49,7 +49,9 @@ def registration(request):
     form = UserCreationForm()
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
-        form.save()
-        messages.success(request, 'bien ajoute')
+        if form.is_valid():
+            form.save()
+            messages.success(request,'votre compte a été bien ajouté !')
+            return redirect('gestion:welcome')
     return render(request, "register.html", {'form': form})
 

@@ -2,7 +2,7 @@ from django.conf.urls import url
 from gestion.views import *
 
 urlpatterns = [
-    url('welcome', view=index),
+    url('welcome', view=index, name='welcome'),
     url('register', view=registration, name='register'),
     url('accueil', view=accueil, name='accueil'),
     url('add/',view=ajoutEmploye, name='add'),
