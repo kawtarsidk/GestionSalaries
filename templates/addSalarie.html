@@ -2,26 +2,27 @@
 {% block content %}
     {% block title %}
         <h4 class=" is-size-4 has-text-centered has-text-weight-bold ">Ajouter un nouveau salarie</h4>
-
     {% endblock %}
+    <br>
+    <br>
+
      <div class="container">
         <div class="columns is-mobile">
             <div class="column is-half is-offset-one-quarter">
                 <form method="post">
                     {% csrf_token %}
-                    {% for non_field_error in form.non_field_errors %}
-                        <p class="help is-danger">{{ non_field_error }}</p>
-                    {% endfor %}
+                <table>
                     {% for field in form %}
-                        <div class="field">
-                            <label for="{{ field.id_for_label }}" class="label">{{ field.html_name }}</label>
-                            {{ field }}
-                        {% for error in field.errors %}
-                            <p class="help is-danger">{{ error }}</p>
-                        {% endfor %}
-                        </div>
+                        <tr>
+                        <th><label for="{{ field.id_for_label }}" class="label">{{ field.html_name }}</label></th>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td>{{ field }}</td>
+
+                        </tr>
                     {% endfor %}
-                    <input type="submit" value="SIGN UP" class="button is-primary">
+                </table>
+                <br>
+                    <input type="submit" value="Enregistrer" class="button is-primary">
                 </form>
             </div>
         </div>
