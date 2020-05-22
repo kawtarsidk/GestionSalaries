@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
-from .urls import *
+
 
 
 def accueil(request):
@@ -44,3 +44,12 @@ def listeSalaries(request):
 def getSalarie(request, id):
     u = Salarie.objects.get(id=id)
     return render(request, "getSalarie.html", {"user": u})
+
+def registration(request):
+    form = UserCreationForm()
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        form.save()
+        messages.success(request, 'bien ajoute')
+    return render(request, "register.html", {'form': form})
+
