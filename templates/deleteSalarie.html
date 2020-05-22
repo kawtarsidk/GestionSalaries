@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<i class="fas fa-home"></i>
+    <form method="post">
+    {% csrf_token %}
+        <h1 class=" is-size-1 has-text-centered has-text-weight-bold "> Supprimer le salarie ?</h1>
+    <input type="submit" value="supprimer" class="button is-danger">
+    </form>
+{% endblock %}

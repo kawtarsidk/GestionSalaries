@@ -1,4 +1,4 @@
-from gestion.forms import SalForm, BulletinForm
+from gestion.forms import BulletinForm, salForm
 from gestion.models import *
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -35,9 +35,9 @@ def deconnexion(request):
 
 @login_required(login_url='gestion:welcome')
 def ajoutEmploye(request):
-    form = SalForm()
+    form = salForm()
     if request.method == 'POST':
-        form = SalForm(request.POST)
+        form = salForm(request.POST)
         form.save()
         messages.success(request, 'bien ajoute')
     return render(request, "addSalarie.html", {'form': form})
@@ -54,15 +54,13 @@ def getSalarie(request, id):
     u = Salarie.objects.get(id=id)
     return render(request, "getSalarie.html", {"user": u})
 
-
-@login_required(login_url='gestion:welcome')
 def registration(request):
     form = UserCreationForm()
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request,'votre compte a été bien ajouté !')
+            messages.success(request, 'votre compte a été bien ajouté !')
             return redirect('gestion:welcome')
     return render(request, "register.html", {'form': form})
 
@@ -78,3 +76,26 @@ def infoBulletin(request):
 
 
 
+@login_required(login_url='gestion:welcome')
+def modifierSalarie(request, pk):
+    salaries = Salarie.objects.get(id=pk)
+    form = salForm(instance=salaries)
+
+    if request.method == 'POST':
+        form = salForm(request.POST, instance=salaries)
+        if form.is_valid():
+            form.save()
+            return redirect('gestion:all')
+
+    context = {'form': form}
+    return render(request, 'addSalarie.html', context)
+
+@login_required(login_url='gestion:welcome')
+def deleteSalarie(request, pk):
+    salarie = Salarie.objects.get(id=pk)
+    if request.method == "POST":
+        salarie.delete()
+        return redirect('gestion:all')
+
+    context = {'item': salarie}
+    return render(request, 'deleteSalarie.html', context)

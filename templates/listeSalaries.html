@@ -9,13 +9,9 @@
         <th scope="col">nom</th>
         <th scope="col">prenom</th>
         <th scope="col">E-mail</th>
-        <th scope="col">addresse</th>
         <th scope="col">telephone</th>
         <th scope="col">Departement</th>
         <th scope="col">Emploi occupe</th>
-        <th scope="col">Date</th>
-        <th scope="col">Anciennete</th>
-        <th scope="col">SalaireBase</th>
         <th scope="col">Action</th>
 
         </tr>
@@ -26,15 +22,11 @@
             <th scope="row">{{ u.id }}</th>
             <td>{{ u.nom }}</td>
             <td>{{ u.prenom }}</td>
-            <td>{{ u.Email }}</td>
-            <td>{{ u.Addresse }}</td>
-            <td>{{ u.Telephone }}</td>
-            <td>{{ u.Departement}}</td>
-            <td>{{ u.EmploiOccupe}}</td>
-            <td>{{ u.dateNaissance }}</td>
-            <td>{{ u.Anciennete }}</td>
-            <td>{{ u.SalaireBase }}</td>
-            <td><a href="{% url 'gestion:getsal' u.id %}">Lire</a></td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.telephone }}</td>
+            <td>{{ u.departement}}</td>
+            <td>{{ u.emploiOccupe}}</td>
+                <td><a  href="{% url 'gestion:getsal' u.id %}">Lire</a><a href="{% url 'gestion:updateSal' u.id %}">Modifier</a><a href="{% url 'gestion:deleteSal' u.id %}">supprimer</a> </td>
             </tr>
     {% endfor %}
 
