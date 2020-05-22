@@ -3,6 +3,7 @@ from gestion.views import *
 
 urlpatterns = [
     url('welcome', view=index, name='welcome'),
+    url('logout', view=deconnexion, name='logout'),
     url('register', view=registration, name='register'),
     url('accueil', view=accueil, name='accueil'),
     url('add/',view=ajoutEmploye, name='add'),

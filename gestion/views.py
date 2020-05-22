@@ -26,6 +26,11 @@ def index(request):
     return render(request, "login.html")
 
 
+def deconnexion(request):
+    logout(request)
+    return redirect('gestion:welcome')
+
+
 def ajoutEmploye(request):
     form = SalForm()
     if request.method == 'POST':
