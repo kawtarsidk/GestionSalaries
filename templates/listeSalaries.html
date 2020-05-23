@@ -10,7 +10,6 @@
         <th scope="col">prenom</th>
         <th scope="col">E-mail</th>
         <th scope="col">telephone</th>
-        <th scope="col">Departement</th>
         <th scope="col">Emploi occupe</th>
         <th scope="col">Action</th>
 
@@ -24,9 +23,8 @@
             <td>{{ u.prenom }}</td>
             <td>{{ u.email }}</td>
             <td>{{ u.telephone }}</td>
-            <td>{{ u.departement}}</td>
             <td>{{ u.emploiOccupe}}</td>
-                <td><a  href="{% url 'gestion:getsal' u.id %}">Lire</a><a href="{% url 'gestion:updateSal' u.id %}">Modifier</a><a href="{% url 'gestion:deleteSal' u.id %}">supprimer</a> </td>
+                <td><a  href="{% url 'gestion:getsal' u.id %}" class="has-background-info" style="color: white">Lire    </a><a href="{% url 'gestion:updateSal' u.id %}" class="has-background-success" style="color: white">Modifier   </a><a href="{% url 'gestion:deleteSal' u.id %}" class="has-background-danger" style="color: white">supprimer</a> </td>
             </tr>
     {% endfor %}
 

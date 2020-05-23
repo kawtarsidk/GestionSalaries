@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 <i class="fas fa-home"></i>
-        <h1 class=" is-size-1 has-text-centered has-text-weight-bold "> Le salarie {{ user.id }}</h1>
+        <h1 class=" is-size-1 has-text-centered has-text-weight-bold "> Bulletin de paie de {{ user.nom }}</h1>
     <ul>
-     <li> {{ user.nom }}</li>
-     <li> {{ user.prenom }}</li>
-     <li> {{ user.email }}</li>
-     <li> {{ user.addresse }}</li>
-     <li> {{ user.telephone }}</li>
-     <li> {{ user.departement }}</li>
-     <li> {{ user.emploiOccupe }}</li>
-     <li> {{ user.dateNaissance }}</li>
-     <li> {{ user.anciennete}}</li>
-     <li> {{ user.salaireBase}}</li>
+     <li>nom: {{ user.nom }}</li>
+     <li>prenom: {{ user.prenom }}</li>
+     <li>email: {{ user.email }}</li>
+     <li>adresse: {{ user.adresse }}</li>
+     <li>telephone: {{ user.telephone }}</li>
+     <li>departement: {{ user.departement }}</li>
+     <li>emploi: {{ user.emploiOccupe }}</li>
+     <li>date de naissance: {{ user.dateNaissance }}</li>
+     <li>anciennete: {{ user.Anciennete}}</li>
+     <li>salaire de base {{ user.salaireBase}}</li>
+     <li>prime: {{ user.bulletinPaie.prime}}</li>
+     <li>prime d'anciennete: {{primeAnciennete}} </li>
+     <li>salaire Brut: {{salaireBrut}} </li>
+     <li>cotisation cnss: {{cnss}} </li>
+     <li>cotisation cimr: {{cimr}} </li>
+     <li>prelevement impot: {{impot}} </li>
+     <li>salaire net: {{salaireNet}} </li>
 </ul>
 {% endblock %}

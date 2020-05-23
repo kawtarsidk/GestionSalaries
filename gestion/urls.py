@@ -8,9 +8,10 @@ urlpatterns = [
     url('accueil', view=accueil, name='accueil'),
     url('add/',view=ajoutEmploye, name='add'),
     url('lesSalaries',view=listeSalaries, name='all'),
-    url('getEMpl/(?P<id>.+)', view=getSalarie, name='getsal'),
+    url('getEMpl/(?P<pk>.+)', view=calculSalaireNet, name='getsal'),
     url('infoBulletin', view=infoBulletin, name='infoBulletin'),
     url('updateSal/(?P<pk>.+)/', view=modifierSalarie, name="updateSal"),
     url('deleteSal/(?P<pk>.+)/', view=deleteSalarie, name="deleteSal"),
+
 
 ]

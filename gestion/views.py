@@ -49,11 +49,6 @@ def listeSalaries(request):
     return render(request, "listeSalaries.html", {'salaries': liste})
 
 
-@login_required(login_url='index')
-def getSalarie(request, id):
-    u = Salarie.objects.get(id=id)
-    return render(request, "getSalarie.html", {"user": u})
-
 def registration(request):
     form = UserCreationForm()
     if request.method == 'POST':
@@ -75,7 +70,6 @@ def infoBulletin(request):
     return render(request, "addSalarie.html", {'form': form})
 
 
-
 @login_required(login_url='gestion:welcome')
 def modifierSalarie(request, pk):
     salaries = Salarie.objects.get(id=pk)
@@ -90,6 +84,7 @@ def modifierSalarie(request, pk):
     context = {'form': form}
     return render(request, 'addSalarie.html', context)
 
+
 @login_required(login_url='gestion:welcome')
 def deleteSalarie(request, pk):
     salarie = Salarie.objects.get(id=pk)
@@ -99,3 +94,36 @@ def deleteSalarie(request, pk):
 
     context = {'item': salarie}
     return render(request, 'deleteSalarie.html', context)
+
+
+@login_required(login_url='index')
+def calculSalaireNet(request, pk):
+    s = Salarie.objects.get(id=pk)
+    if s.Anciennete < 2:
+        primeAnciennete = 0
+    elif s.Anciennete > 2 & s.Anciennete < 5:
+        primeAnciennete = s.salaireBase*0.05
+    elif s.Anciennete > 5 & s.Anciennete < 12:
+        primeAnciennete = s.salaireBase * 0.1
+    elif s.Anciennete > 12 & s.Anciennete < 20:
+        primeAnciennete = s.salaireBase * 0.15
+    elif s.Anciennete > 20 & s.Anciennete < 25:
+        primeAnciennete = s.salaireBase * 0.2
+    else:
+        primeAnciennete = s.salaireBase * 0.25
+
+    salaireBrut = s.salaireBase + primeAnciennete + s.bulletinPaie.prime
+
+    if salaireBrut <= 6000:
+        cnss = salaireBrut * s.bulletinPaie.p_cnss
+    else:
+        cnss = 6000 * s.bulletinPaie.p_cnss
+
+    cimr = salaireBrut * s.bulletinPaie.p_cimr
+    impot = salaireBrut * s.bulletinPaie.p_impot
+    salaireNet = salaireBrut - cnss - cimr - impot
+
+    return render(request, 'getSalarie.html', {"user": s, 'primeAnciennete': primeAnciennete, 'salaireBrut': salaireBrut, 'cnss': cnss, 'cimr': cimr, 'impot': impot, 'salaireNet': salaireNet})
+
+
+
