@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <br><br>
+    <h5 class=" is-size-4 has-text-centered has-text-weight-bold "> Documentation de l'application</h5>
+    <div class="card-body" style="width: 800px;  margin-left: auto; margin-right: auto;"  >
+    <br><br>
+        Cette application est dedidiée à la gestion des salariés<br><br>
+        <ul>
+            <li style=" list-style-type: circle;">
+                  pour ajouter un nouveau salarié choisissez dans le menu en dessus gestion/ajouter un nouveau salarié,<br>
+       assurez vous dabord que vous lui avez déjà créé un bulletin de paie qui lui sera attribué,( créez un bulletin de
+       paie en choisissant gestion/ajouter infos bulletin de paie dans le menu en dessus)
+            </li>
+            <br>
+            <li style=" list-style-type: circle;">
+                  Une fois créé vous pouvez voir qu'il est ajouté dans la liste des<br> salariés gestion/afficher;
+        là, vous pouvez voir ses informations complètes en cliquant sur lire ; <br>vous pouvez modifier ses
+        informations en cliquant sur modifer; ou bien vous pouvez<br> le supprimer complètement en appuyant sur supprimer
+            </li>
+            <br>
+            <li style=" list-style-type: circle;">enfin notre application se charge du calcul
+        du salaire net d'un salarié en se basant sur son salaire de base; et<br> en prenant en considération les primes, les impôts; la
+        cnss ..
+            </li>
+        </ul>
+    </div>
+
+{% endblock %}

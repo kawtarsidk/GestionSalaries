@@ -125,5 +125,5 @@ def calculSalaireNet(request, pk):
 
     return render(request, 'getSalarie.html', {"user": s, 'primeAnciennete': primeAnciennete, 'salaireBrut': salaireBrut, 'cnss': cnss, 'cimr': cimr, 'impot': impot, 'salaireNet': salaireNet})
 
-
-
+def documentation (request):
+        return render(request,"Documentation.html")

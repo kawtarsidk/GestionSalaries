@@ -12,6 +12,7 @@ urlpatterns = [
     url('infoBulletin', view=infoBulletin, name='infoBulletin'),
     url('updateSal/(?P<pk>.+)/', view=modifierSalarie, name="updateSal"),
     url('deleteSal/(?P<pk>.+)/', view=deleteSalarie, name="deleteSal"),
+    url('doc', view=documentation, name="doc")
 
 
 ]

@@ -1,24 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 <i class="fas fa-home"></i>
-        <h1 class=" is-size-1 has-text-centered has-text-weight-bold "> Bulletin de paie de {{ user.nom }}</h1>
-    <ul>
-     <li>nom: {{ user.nom }}</li>
-     <li>prenom: {{ user.prenom }}</li>
-     <li>email: {{ user.email }}</li>
-     <li>adresse: {{ user.adresse }}</li>
-     <li>telephone: {{ user.telephone }}</li>
-     <li>departement: {{ user.departement }}</li>
-     <li>emploi: {{ user.emploiOccupe }}</li>
-     <li>date de naissance: {{ user.dateNaissance }}</li>
-     <li>anciennete: {{ user.Anciennete}}</li>
-     <li>salaire de base {{ user.salaireBase}}</li>
-     <li>prime: {{ user.bulletinPaie.prime}}</li>
-     <li>prime d'anciennete: {{primeAnciennete}} </li>
-     <li>salaire Brut: {{salaireBrut}} </li>
-     <li>cotisation cnss: {{cnss}} </li>
-     <li>cotisation cimr: {{cimr}} </li>
-     <li>prelevement impot: {{impot}} </li>
-     <li>salaire net: {{salaireNet}} </li>
-</ul>
+        <h2 class=" is-size-2 has-text-centered has-text-weight-bold "> Bulletin de paie de {{ user.nom }}</h2>
+    <table class="table is-bordered"style="margin-left: 40px">
+
+       <tr> <th>nom:</th> <td>{{ user.nom }}</td><th>prenom:</th> <td>{{ user.prenom }}</td><th>email: </th><td>{{ user.email }}</td></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr><th>adresse:</th> <td>{{ user.adresse }}</td><th>telephone:</th> <td>{{ user.telephone }}</td><th>departement:</th> <td>{{ user.departement }}</td></tr>
+        <tr><th>emploi:</th> <td>{{ user.emploiOccupe }}</td><th>date de naissance:</th> <td>{{ user.dateNaissance }}</td><th>anciennete:</th> <td>{{ user.Anciennete}}</td></tr>
+    </table>
+    <table class="table" style="margin-left: 180px">
+        <tr class="is-selected" ><td></td><td></td><th>salaire de base </th><td>{{ user.salaireBase}}</td><td></td><td></td></tr>
+        <tr><td></td><td></td><th>prime:</th> <td>{{ user.bulletinPaie.prime}}</td><td></td><td></td></tr>
+        <tr><td></td><td></td><th>prime d'anciennete: </th><td>{{primeAnciennete}} </td><td></td><td></td></tr>
+     <tr><td></td><td></td><th>salaire Brut:</th> <td>{{salaireBrut}} </td><td></td><td></td></tr>
+     <tr><td></td><td></td><th>cotisation cnss: </th><td>{{cnss}} </td><td></td><td></td></tr>
+     <tr><td></td><td></td><th>cotisation cimr:</th> <td>{{cimr}} </td><td></td><td></td></tr>
+     <tr><td></td><td></td><th>prelevement impot: </th><td>{{impot}} </td><td></td><td></td></tr>
+     <tr class="is-selected"><td></td><td></td><th>salaire net:</th> <td>{{salaireNet}} </td><td></td><td></td></tr>
+    </table>
 {% endblock %}
