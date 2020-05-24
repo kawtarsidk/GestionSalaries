@@ -38,7 +38,6 @@ class Salarie(Employe):
 
 class BulletinPaie(models.Model):
     prime = models.IntegerField()
-    p_impot = 0.25
     p_cnss = 0.0429
     p_cimr = 0.06
 

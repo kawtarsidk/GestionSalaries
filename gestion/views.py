@@ -38,8 +38,9 @@ def ajoutEmploye(request):
     form = salForm()
     if request.method == 'POST':
         form = salForm(request.POST)
-        form.save()
-        messages.success(request, 'bien ajoute')
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'bien ajoute')
     return render(request, "addSalarie.html", {'form': form})
 
 
@@ -119,8 +120,21 @@ def calculSalaireNet(request, pk):
     else:
         cnss = 6000 * s.bulletinPaie.p_cnss
 
+    if salaireBrut == 2500:
+        impot = salaireBrut * 0
+    elif 2500 < salaireBrut < 4167:
+        impot = salaireBrut * 0.1
+    elif 4166 < salaireBrut < 5001:
+        impot = salaireBrut * 0.2
+    elif 5000 < salaireBrut < 6667:
+        impot = salaireBrut * 0.3
+    elif 6666 < salaireBrut < 15001:
+        impot = salaireBrut * 0.34
+    else:
+        impot = salaireBrut * 0.38
+
+    impot = round(impot,2)
     cimr = salaireBrut * s.bulletinPaie.p_cimr
-    impot = salaireBrut * s.bulletinPaie.p_impot
     salaireNet = salaireBrut - cnss - cimr - impot
 
     return render(request, 'getSalarie.html', {"user": s, 'primeAnciennete': primeAnciennete, 'salaireBrut': salaireBrut, 'cnss': cnss, 'cimr': cimr, 'impot': impot, 'salaireNet': salaireNet})
