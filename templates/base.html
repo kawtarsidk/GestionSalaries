@@ -32,7 +32,9 @@
       <a class="navbar-item" href="{% url 'gestion:accueil' %}">
         Home
       </a>
-
+           <a class="navbar-item" href="{% url 'gestion:doc' %}">
+            Documentation
+          </a>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           Gestion
@@ -48,10 +50,7 @@
           <a class="navbar-item" href="{% url 'gestion:all'%}">
             afficher
           </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item" href="{% url 'gestion:doc' %}">
-            Documentation
-          </a>
+
         </div>
       </div>
     </div>

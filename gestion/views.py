@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .filters import Salfilter
 
 
 @login_required(login_url='gestion:welcome')
@@ -47,7 +48,9 @@ def ajoutEmploye(request):
 @login_required(login_url='gestion:welcome')
 def listeSalaries(request):
     liste = Salarie.objects.all()
-    return render(request, "listeSalaries.html", {'salaries': liste})
+    myFilter = Salfilter(request.GET, queryset=liste)
+    liste = myFilter.qs
+    return render(request, "listeSalaries.html", {'salaries': liste, 'myFilter': myFilter})
 
 
 def registration(request):
