@@ -9,12 +9,13 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+import pip
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(PROJECT_ROOT)
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))pip
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -38,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gestion',
-    'django_filters'
+    'django_filters',
+   # 'django_mysql'
 ]
 
 MIDDLEWARE = [
@@ -81,6 +83,18 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+# }
+# Mysql
+
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'GestionSalarie',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',
+#         'PORT': '8889'
+#
+# }
 }
 
 

@@ -15,9 +15,10 @@ class Employe(models.Model):
     emploiOccupe = models.CharField(max_length=30)
     Anciennete = models.IntegerField()
     salaireBase = models.IntegerField()
+    prime = models.IntegerField()
 
     """la notation ManyToOne"""
-    bulletinPaie = models.ForeignKey('BulletinPaie', on_delete=models.CASCADE)
+    #bulletinPaie = models.ForeignKey('BulletinPaie', on_delete=models.CASCADE)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
@@ -37,7 +38,6 @@ class Salarie(Employe):
 
 
 class BulletinPaie(models.Model):
-    prime = models.IntegerField()
     p_cnss = 0.0429
     p_cimr = 0.06
 

@@ -64,14 +64,14 @@ def registration(request):
     return render(request, "register.html", {'form': form})
 
 
-@login_required(login_url='gestion:welcome')
-def infoBulletin(request):
-    form = BulletinForm()
-    if request.method == 'POST':
-        form = BulletinForm(request.POST)
-        form.save()
-        messages.success(request, 'information bien ajouté')
-    return render(request, "addSalarie.html", {'form': form})
+# @login_required(login_url='gestion:welcome')
+# def infoBulletin(request):
+#     form = BulletinForm()
+#     if request.method == 'POST':
+#         form = BulletinForm(request.POST)
+#         form.save()
+#         messages.success(request, 'information bien ajouté')
+#     return render(request, "addSalarie.html", {'form': form})
 
 
 @login_required(login_url='gestion:welcome')
@@ -116,12 +116,12 @@ def calculSalaireNet(request, pk):
     else:
         primeAnciennete = s.salaireBase * 0.25
 
-    salaireBrut = s.salaireBase + primeAnciennete + s.bulletinPaie.prime
+    salaireBrut = s.salaireBase + primeAnciennete + s.prime
 
     if salaireBrut <= 6000:
-        cnss = salaireBrut * s.bulletinPaie.p_cnss
+        cnss = salaireBrut * BulletinPaie.p_cnss
     else:
-        cnss = 6000 * s.bulletinPaie.p_cnss
+        cnss = 6000 * BulletinPaie.p_cnss
 
     if salaireBrut == 2500:
         impot = salaireBrut * 0
@@ -137,9 +137,9 @@ def calculSalaireNet(request, pk):
         impot = salaireBrut * 0.38
 
     impot = round(impot,2)
-    cimr = salaireBrut * s.bulletinPaie.p_cimr
+    cimr = salaireBrut * BulletinPaie.p_cimr
     salaireNet = salaireBrut - cnss - cimr - impot
-
+    salaireNet = round(salaireNet, 2)
     return render(request, 'getSalarie.html', {"user": s, 'primeAnciennete': primeAnciennete, 'salaireBrut': salaireBrut, 'cnss': cnss, 'cimr': cimr, 'impot': impot, 'salaireNet': salaireNet})
 
 def documentation (request):
